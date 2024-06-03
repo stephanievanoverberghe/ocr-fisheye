@@ -1,6 +1,22 @@
-# Base de code du projet P6 - Parcours Front-end
+# Openclassrooms - **Projet 6** - Fisheye
 
-## Démarrer le projet
+## Table des matières
 
-Rien à installer ici, il suffit d'ouvrir le fichier `index.html`.
+## Aperçu
 
+## Screenshot
+
+## Fonctionnalités
+
+## Installation
+
+## Utilisation
+
+## Structure du projet
+
+## Technologies utilisées
+
+## Liens
+
+-   Code du site : [GitHub](https://github.com/stephanievanoverberghe/ocr-p6-fisheye)
+-   Site en direct : [GitHub Pages](https://stephanievanoverberghe.github.io/ocr-p6-fisheye/)
