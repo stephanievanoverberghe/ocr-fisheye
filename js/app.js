@@ -39,6 +39,10 @@ class PhotographerApp {
     constructor() {
         this.$photographerHeader = document.querySelector('.photograph__header');
         this.$mediaSection = document.querySelector('.result');
+        this.$creditSection = document.createElement('div'); // Créez dynamiquement le conteneur de crédit
+        this.$creditSection.className = 'credit';
+        document.body.appendChild(this.$creditSection); // Ajoutez-le au body
+
         this.photographersApi = new PhotographerApi('/data/photographers.json');
         this.mediaApi = new MediaApi('/data/photographers.json');
     }
@@ -54,7 +58,10 @@ class PhotographerApp {
             if (photographer) {
                 this.displayPhotographerInfo(photographer);
                 const mediaData = await this.mediaApi.getMedia();
-                this.displayPhotographerMedia(photographer, mediaData.filter(m => m.photographerId == photographerId));
+                const photographerMedia = mediaData.filter(m => m.photographerId == photographerId);
+                this.displayPhotographerMedia(photographer, photographerMedia);
+                const totalLikes = this.calculateTotalLikes(photographerMedia);
+                this.displayPhotographerCredit(photographer, totalLikes);
             } else {
                 console.error('Photographer not found');
             }
@@ -80,6 +87,20 @@ class PhotographerApp {
             this.$mediaSection.appendChild(mediaCard.createMediaCard());
         });
     }
+
+    calculateTotalLikes(media) {
+        return media.reduce((total, item) => total + item.likes, 0);
+    }
+
+    displayPhotographerCredit(photographer, totalLikes) {
+        this.$creditSection.innerHTML = `
+            <div class="total__likes">
+                <span>${totalLikes} likes</span>
+                <i class="fa-solid fa-heart"></i>
+            </div>
+            <span>${photographer.price}€/jour</span>
+        `;
+    }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -91,3 +112,4 @@ document.addEventListener('DOMContentLoaded', () => {
         app.main();
     }
 });
+

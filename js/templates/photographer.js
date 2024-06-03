@@ -40,4 +40,18 @@ class PhotographerCard {
 
         return card;
     }
+
+    createPhotographerCredit(totalLikes) {
+        const credit = document.createElement('div');
+        credit.className = 'credit';
+        credit.innerHTML = `
+            <div class="total__likes">
+                <span>${totalLikes} likes</span>
+                <i class="fa-solid fa-heart"></i>
+            </div>
+            <span>${this.photographer.price}€/jour</span>
+        `;
+
+        return credit;
+    }
 }
