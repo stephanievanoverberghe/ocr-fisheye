@@ -61,18 +61,18 @@ h1 {
     text-align: center;
 }
 
-.photographers__wrapper article h2 {
-    color: #D3573C;
-    font-size: 3.6rem;
-    font-weight: 400;
-    line-height: 4.687rem;
-}
-
 .photographer__picture {
     height: 20rem;
     width: 20rem;
     object-fit: cover;
     border-radius: 50%;
+}
+
+.photographer__title {
+    color: #D3573C;
+    font-size: 3.6rem;
+    font-weight: 400;
+    line-height: 4.687rem;
 }
 
 .city__country {

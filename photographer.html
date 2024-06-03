@@ -1,37 +1,52 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <title>Fisheye - photographe </title>
-  </head>
-  <body>
-    <header>
-      <img src="assets/images/logo.png" class="logo" />
-    </header>
-    <main id="main">
-      <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
-      </div>
-    </main>
-    <div id="contact_modal">
-			<div class="modal">
-				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
-        </header>
-				<form>
-					<div>
-						<label>Prénom</label>
-						<input />
-					</div>
-          <button class="contact_button">Envoyer</button>
-				</form>
-			</div>
-		</div>
-    <script src="/scripts/pages/photographer.js"></script>
-    <script src="/scripts/utils/contactForm.js"></script>
-  </body>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Découvrez les œuvres de notre photographe sur Fisheye.">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <script src="https://kit.fontawesome.com/33a775bcdb.js" crossorigin="anonymous"></script>
+  <title>Fisheye - photographe</title>
+</head>
+
+<body class="photographer-page">
+  <!-- HEADER -->
+  <header role="banner">
+    <a href="index.html" aria-label="Fisheye Home page">
+      <img src="assets/images/logo.png" class="logo" alt="Fisheye Home page" />
+    </a>
+  </header>
+  <!-- MAIN -->
+  <main id="main" role="main">
+    <div class="photograph__header" aria-labelledby="photograph__header-title"></div>
+    <div class="photograph__body" aria-labelledby="photograph__body-title">
+      <div class="result" aria-live="polite"></div>
+    </div>
+  </main>
+  <div id="contact_modal" role="dialog" aria-labelledby="contact_modal_title" aria-modal="true">
+    <div class="modal">
+      <header>
+        <h2>Contactez-moi</h2>
+        <img src="assets/icons/close.svg" onclick="closeModal()" />
+      </header>
+      <form>
+        <div>
+          <label for="firstname">Prénom</label>
+          <input id="firstname" type="text" />
+        </div>
+        <button type="submit" class="contact_button">Envoyer</button>
+      </form>
+    </div>
+  </div>
+  <!-- SCRIPTS -->
+  <script src="js/models/Photographer.js"></script>
+  <script src="js/templates/photographer.js"></script>
+  <script src="js/api/api.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/utils/contactForm.js"></script>
+</body>
+
 </html>
