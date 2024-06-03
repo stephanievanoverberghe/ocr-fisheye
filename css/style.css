@@ -14,7 +14,11 @@ html {
 
 body {
     font-family: "DM Sans", sans-serif;
-    margin: 4.2rem 10rem;
+    max-width: 144rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 4.2rem auto;
 }
 
 a {
@@ -49,7 +53,7 @@ h1 {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 7rem;
-    margin-top: 10rem;
+    margin-top: 5rem;
 }
 
 .photographer__card {
