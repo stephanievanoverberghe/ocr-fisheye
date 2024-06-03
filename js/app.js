@@ -35,13 +35,12 @@ class HomeApp {
     }
 }
 
-/**
- * Class representing the main application for the photographer page
- */
 class PhotographerApp {
     constructor() {
         this.$photographerHeader = document.querySelector('.photograph__header');
+        this.$mediaSection = document.querySelector('.result');
         this.photographersApi = new PhotographerApi('/data/photographers.json');
+        this.mediaApi = new MediaApi('/data/photographers.json');
     }
 
     async main() {
@@ -54,6 +53,8 @@ class PhotographerApp {
 
             if (photographer) {
                 this.displayPhotographerInfo(photographer);
+                const mediaData = await this.mediaApi.getMedia();
+                this.displayPhotographerMedia(photographer, mediaData.filter(m => m.photographerId == photographerId));
             } else {
                 console.error('Photographer not found');
             }
@@ -68,6 +69,16 @@ class PhotographerApp {
 
         this.$photographerHeader.innerHTML = '';
         this.$photographerHeader.appendChild(infoCard);
+    }
+
+    displayPhotographerMedia(photographer, media) {
+        this.$mediaSection.innerHTML = '';
+
+        media.forEach(mediaItem => {
+            const mediaModel = new Media(mediaItem);
+            const mediaCard = new MediaCard(mediaModel);
+            this.$mediaSection.appendChild(mediaCard.createMediaCard());
+        });
     }
 }
 

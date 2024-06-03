@@ -31,3 +31,18 @@ class PhotographerApi extends Api {
         return data ? data.photographers : [];
     }
 }
+
+class MediaApi extends Api {
+    /**
+     * 
+     * @param {string} url 
+     */
+    constructor(url) {
+        super(url);
+    }
+
+    async getMedia() {
+        const data = await this.get();
+        return data ? data.media : [];
+    }
+}
