@@ -1,7 +1,10 @@
+/**
+ * Class representing a photographer.
+ */
 class Photographer {
     /**
      * Create a Photographer instance
-     * @param {Object} data 
+     * @param {Object} data - The photographer data.
      */
     constructor(data) {
         this._id = data.id;

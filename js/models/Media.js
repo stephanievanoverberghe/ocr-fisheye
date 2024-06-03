@@ -1,7 +1,10 @@
+/**
+ * Class representing a media item.
+ */
 class Media {
     /**
-     * Create a Photographer instance
-     * @param {Object} data 
+     * Create a Media instance
+     * @param {Object} data - The media data
      */
     constructor(data) {
         this._id = data.id;

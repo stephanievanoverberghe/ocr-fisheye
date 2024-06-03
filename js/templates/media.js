@@ -1,16 +1,20 @@
+/**
+ * Class representing a media card.
+ */
 class MediaCard {
     /**
-     * 
-     * @param {Media} media 
+     * Create a MediaCard instance.
+     * @param {Media} media - The media data.
      */
     constructor(media) {
-        this.media = media;
-    };
+        this.media = media; // Initialise le média
+    }
 
     createMediaCard() {
         const card = document.createElement('article');
         card.className = 'card';
 
+        // Si le média est une image, crée une structure HTML pour l'image
         if (this.media.image) {
             card.innerHTML = `
                 <img src="${this.media.image}" alt="${this.media.title}" class="card__img">
@@ -22,7 +26,9 @@ class MediaCard {
                     </div>
                 </div>
             `;
-        } else if (this.media.video) {
+        }
+        // Si le média est une vidéo, crée une structure HTML pour la vidéo
+        else if (this.media.video) {
             card.innerHTML = `
                 <video controls class="card__video">
                     <source src="${this.media.video}" type="video/mp4">
@@ -40,4 +46,4 @@ class MediaCard {
 
         return card;
     }
-};
+}

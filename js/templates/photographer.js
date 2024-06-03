@@ -1,10 +1,13 @@
+/**
+ * Class representing a photographer card.
+ */
 class PhotographerCard {
     /**
-     * Create a PhotographerCard instance
-     * @param {} photographer 
+     * Create a PhotographerCard instance.
+     * @param {Object} photographer - The photographer data.
      */
     constructor(photographer) {
-        this.photographer = photographer;
+        this.photographer = photographer; // Initialise le photographe
     }
 
     createPhotographerCard() {
@@ -41,7 +44,20 @@ class PhotographerCard {
         return card;
     }
 
-    createPhotographerCredit(totalLikes) {
+    /**
+     * Calculate the total likes of all media items.
+     * @param {Array} media - The media data.
+     */
+    calculateTotalLikes(media) {
+        return media.reduce((total, item) => total + item.likes, 0); // Calcule le total des likes
+    }
+
+    /**
+     * Display photographer credit including total likes and price.
+     * @param {Object} photographer - The photographer data.
+     * @param {number} totalLikes - The total likes.
+     */
+    displayPhotographerCredit(photographer, totalLikes) {
         const credit = document.createElement('div');
         credit.className = 'credit';
         credit.innerHTML = `
@@ -49,7 +65,7 @@ class PhotographerCard {
                 <span>${totalLikes} likes</span>
                 <i class="fa-solid fa-heart"></i>
             </div>
-            <span>${this.photographer.price}€/jour</span>
+            <span>${photographer.price}€/jour</span>
         `;
 
         return credit;
