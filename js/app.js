@@ -7,7 +7,7 @@ class HomeApp {
      */
     constructor() {
         this.$photographersWrapper = document.querySelector('.photographers__wrapper');
-        this.photographersApi = new PhotographerApi('./../data/photographers.json');
+        this.photographersApi = new PhotographerApi('data/photographers.json');
     }
 
     /**
@@ -49,8 +49,8 @@ class PhotographerApp {
         this.$creditSection.className = 'credit';
         document.body.appendChild(this.$creditSection);
 
-        this.photographersApi = new PhotographerApi('./../data/photographers.json');
-        this.mediaApi = new MediaApi('./../data/photographers.json');
+        this.photographersApi = new PhotographerApi('data/photographers.json');
+        this.mediaApi = new MediaApi('data/photographers.json');
     }
 
     /**
