@@ -26,10 +26,10 @@ class Media {
         return this._title;
     };
     get image() {
-        return this._image ? `../../assets/photographers/${this._photographerId}/${this._image}` : null;
+        return this._image ? `./../../assets/photographers/${this._photographerId}/${this._image}` : null;
     };
     get video() {
-        return this._video ? `../../assets/photographers/${this._photographerId}/${this._video}` : null;
+        return this._video ? `./../../assets/photographers/${this._photographerId}/${this._video}` : null;
     };
     get likes() {
         return this._likes;
