@@ -23,6 +23,14 @@
   <main id="main" role="main">
     <div class="photograph__header" aria-labelledby="photograph__header-title"></div>
     <div class="photograph__body" aria-labelledby="photograph__body-title">
+      <form action="" class="form">
+        <label for="sort" class="sort-by">Trier par</label>
+        <select name="sort" id="sort" class="dropdown">
+          <option value="popular" class="asc">Popularité</option>
+          <option value="date">Date</option>
+          <option value="title">Titre</option>
+        </select>
+      </form>
       <div class="result" aria-live="polite"></div>
     </div>
   </main>

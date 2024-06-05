@@ -50,39 +50,57 @@
 
 /* SORT */
 
-.sort {
+.form {
     display: grid;
     grid-template-columns: repeat(2, 10rem);
     align-items: center;
     margin-top: 2rem;
 }
 
-.sort__title {
+.sort-by {
     font-size: 1.8rem;
-    font-weight: 400;
+    font-weight: 700;
     line-height: 2.344rem;
     margin-right: 2.5rem;
 }
 
-.form__select {
-    border: none;
+.dropdown {
+    appearance: none;
+    background: url('./../assets/images/arrow-down.png') no-repeat right 2rem center;
+    background-size: 1.5rem;
     background-color: #901C1C;
     color: white;
-    padding: 2.3rem 2rem;
+    width: 17rem;
     font-size: 1.8rem;
     font-weight: 700;
     line-height: 2.344rem;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 2.3rem 2rem;
+}
+
+.dropdown:focus {
+    outline: none;
 }
 
 /* PHOTOGRAPH PICTURES */
 
 .result {
     display: grid;
-    grid-template-columns: repeat(3, 35rem);
+    grid-template-columns: repeat(3, 1fr);
     justify-content: space-between;
-    align-items: center;
+    align-items: start;
     margin-top: 6rem;
-    gap: 2rem;
+    gap: 10rem;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: white;
+    border-radius: 0.5rem;
+    height: 100%;
 }
 
 .card__img,
@@ -97,6 +115,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-grow: 1;
     font-size: 2.4rem;
     font-weight: 400;
     line-height: 3.125rem;
