@@ -1,18 +1,15 @@
-/**
- * Class representing a general API.
- */
 class Api {
     /**
-     * Create an Api instance.
-     * @param {string} url - The URL of the API.
+     * Create an Api instance
+     * @param {string} url 
      */
     constructor(url) {
-        this._url = url; // Initialise l'URL de l'API
+        this._url = url;
     }
 
     async get() {
-        return fetch(this._url) // Effectue une requête fetch à l'URL de l'API
-            .then(response => response.json()) // Convertit la réponse en JSON
+        return fetch(this._url)
+            .then(response => response.json())
             .catch(error => {
                 console.log('an error occurs', error);
                 return null;
@@ -20,40 +17,32 @@ class Api {
     }
 }
 
-/**
- * Class representing the API for photographers.
- * Extends the general Api class.
- */
 class PhotographerApi extends Api {
     /**
-     * Create a PhotographerApi instance.
-     * @param {string} url - The URL of the API.
+     * Create a photographerApi instance
+     * @param {string} url 
      */
     constructor(url) {
-        super(url); // Appelle le constructeur de la classe parente Api
+        super(url);
     }
 
     async getPhotographers() {
-        const data = await this.get(); // Appelle la méthode get de la classe parente
-        return data ? data.photographers : []; // Retourne les données des photographes ou un tableau vide en cas d'erreur
+        const data = await this.get();
+        return data ? data.photographers : [];
     }
 }
 
-/**
- * Class representing the API for media.
- * Extends the general Api class.
- */
 class MediaApi extends Api {
     /**
-     * Create a MediaApi instance.
-     * @param {string} url - The URL of the API.
+     * 
+     * @param {string} url 
      */
     constructor(url) {
-        super(url); // Appelle le constructeur de la classe parente Api
+        super(url);
     }
 
     async getMedia() {
-        const data = await this.get(); // Appelle la méthode get de la classe parente
-        return data ? data.media : []; // Retourne les données des médias ou un tableau vide en cas d'erreur
+        const data = await this.get();
+        return data ? data.media : [];
     }
 }

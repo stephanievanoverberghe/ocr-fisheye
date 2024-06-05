@@ -3,33 +3,31 @@
  */
 class HomeApp {
     /**
-     * Create an App instance.
+     * Create an App instance for the homepage.
      */
     constructor() {
         this.$photographersWrapper = document.querySelector('.photographers__wrapper');
-        this.photographersApi = new PhotographerApi('/data/photographers.json'); // Initialise l'API des photographes
+        this.photographersApi = new PhotographerApi('/data/photographers.json');
     }
 
     /**
-     * Initialize the application.
-     * Fetches photographers data and displays it on the homepage.
-     * @async
+     * Initialize the application for the homepage.
      */
     async main() {
         try {
-            const photographersData = await this.photographersApi.getPhotographers(); // Récupère les données des photographes
+            const photographersData = await this.photographersApi.getPhotographers();
             console.log('Photographers data:', photographersData);
 
             if (!Array.isArray(photographersData)) {
-                throw new TypeError('Expected an array of photographers'); // Vérifie que les données sont un tableau
+                throw new TypeError('Expected an array of photographers');
             }
 
             photographersData
-                .map(data => new Photographer(data)) // Crée des instances de Photographer
-                .map(photographer => new PhotographerCard(photographer)) // Crée des cards de photographes
+                .map(data => new Photographer(data))
+                .map(photographer => new PhotographerCard(photographer))
                 .forEach(template => {
                     console.log(template);
-                    this.$photographersWrapper.appendChild(template.createPhotographerCard()); // Ajoute chaque card au wrapper
+                    this.$photographersWrapper.appendChild(template.createPhotographerCard());
                 });
         } catch (error) {
             console.error('Error in main:', error);
@@ -51,33 +49,31 @@ class PhotographerApp {
         this.$creditSection.className = 'credit';
         document.body.appendChild(this.$creditSection);
 
-        this.photographersApi = new PhotographerApi('/data/photographers.json'); // Initialise l'API des photographes
-        this.mediaApi = new MediaApi('/data/photographers.json'); // Initialise l'API des médias
+        this.photographersApi = new PhotographerApi('/data/photographers.json');
+        this.mediaApi = new MediaApi('/data/photographers.json');
     }
 
     /**
      * Initialize the application for the photographer page.
-     * Fetches photographer and media data, and displays them on the page.
-     * @async
      */
     async main() {
         try {
-            const params = new URLSearchParams(window.location.search); // Récupère les paramètres de l'URL
-            const photographerId = params.get('id'); // Récupère l'ID du photographe
+            const params = new URLSearchParams(window.location.search);
+            const photographerId = params.get('id');
 
-            const photographersData = await this.photographersApi.getPhotographers(); // Récupère les données des photographes
-            const photographer = photographersData.find(p => p.id == photographerId); // Trouve le photographe correspondant
+            const photographersData = await this.photographersApi.getPhotographers();
+            const photographer = photographersData.find(p => p.id == photographerId);
 
             if (photographer) {
-                this.displayPhotographerInfo(photographer); // Affiche les informations du photographe
-                const mediaData = await this.mediaApi.getMedia(); // Récupère les données des médias
-                const photographerMedia = mediaData.filter(m => m.photographerId == photographerId); // Filtre les médias du photographe
-                this.displayPhotographerMedia(photographer, photographerMedia); // Affiche les médias du photographe
-                const photographerCard = new PhotographerCard(photographer); // Crée une instance de PhotographerCard
-                const totalLikes = photographerCard.calculateTotalLikes(photographerMedia); // Calcule le total des likes
-                const creditSection = photographerCard.displayPhotographerCredit(photographer, totalLikes); // Crée la section de crédits
+                this.displayPhotographerInfo(photographer);
+                const mediaData = await this.mediaApi.getMedia();
+                const photographerMedia = mediaData.filter(m => m.photographerId == photographerId);
+                this.displayPhotographerMedia(photographer, photographerMedia);
+                const photographerCard = new PhotographerCard(photographer);
+                const totalLikes = photographerCard.calculateTotalLikes(photographerMedia);
+                const creditSection = photographerCard.createPhotographerCredit(totalLikes);
                 this.$creditSection.innerHTML = '';
-                this.$creditSection.appendChild(creditSection); // Ajoute la section de crédits au conteneur
+                this.$creditSection.appendChild(creditSection);
             } else {
                 console.error('Photographer not found');
             }
@@ -91,11 +87,11 @@ class PhotographerApp {
      * @param {Object} photographer - The photographer data.
      */
     displayPhotographerInfo(photographer) {
-        const photographerCard = new PhotographerCard(photographer); // Crée une instance de PhotographerCard
-        const infoCard = photographerCard.createPhotographerInfo(); // Crée la card d'informations du photographe
+        const photographerCard = new PhotographerCard(photographer);
+        const infoCard = photographerCard.createPhotographerInfo();
 
         this.$photographerHeader.innerHTML = '';
-        this.$photographerHeader.appendChild(infoCard); // Ajoute la card d'informations à l'en-tête
+        this.$photographerHeader.appendChild(infoCard);
     }
 
     /**
@@ -107,20 +103,22 @@ class PhotographerApp {
         this.$mediaSection.innerHTML = '';
 
         media.forEach(mediaItem => {
-            const mediaModel = new Media(mediaItem); // Crée une instance de Media
-            const mediaCard = new MediaCard(mediaModel); // Crée une card de média
-            this.$mediaSection.appendChild(mediaCard.createMediaCard()); // Ajoute la card de média à la section des résultats
+            const mediaModel = new Media(mediaItem);
+            const mediaCard = MediaFactory.createMediaCard(mediaModel);
+            this.$mediaSection.appendChild(mediaCard.createMediaCard());
         });
     }
 }
 
+/**
+ * Initialize the appropriate application when the DOM content is loaded.
+ */
 document.addEventListener('DOMContentLoaded', () => {
     if (document.body.classList.contains('home')) {
-        const app = new HomeApp(); // Initialise l'application pour la page d'accueil
-        app.main(); // Exécute la fonction main de l'application
+        const app = new HomeApp();
+        app.main();
     } else if (document.body.classList.contains('photographer-page')) {
-        const app = new PhotographerApp(); // Initialise l'application pour la page du photographe
-        app.main(); // Exécute la fonction main de l'application
+        const app = new PhotographerApp();
+        app.main();
     }
 });
-
