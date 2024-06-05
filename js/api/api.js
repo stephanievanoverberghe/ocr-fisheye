@@ -9,12 +9,7 @@ class Api {
 
     async get() {
         return fetch(this._url)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                return response.json();
-            })
+            .then(response => response.json())
             .catch(error => {
                 console.log('an error occurs', error);
                 return null;
