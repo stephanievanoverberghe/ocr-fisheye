@@ -25,7 +25,7 @@ class Photographer {
         return this._city;
     };
     get portrait() {
-        return `/assets/photographers/${this._portrait}`;
+        return `./assets/photographers/${this._portrait}`;
     };
     get country() {
         return this._country;
