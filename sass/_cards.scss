@@ -1,0 +1,184 @@
+@use 'media-queries' as *;
+
+.photographer__card {
+    justify-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.photographer__picture {
+    height: 20rem;
+    width: 20rem;
+    object-fit: cover;
+    border-radius: 50%;
+
+    @include sm {
+        height: 15rem;
+        width: 15rem;
+    }
+}
+
+.city__country {
+    color: #901C1C;
+    font-size: 1.3rem;
+    font-weight: 400;
+    line-height: 1.693rem;
+}
+
+.tagline {
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.302rem;
+    margin: 0.5rem 0;
+}
+
+.price {
+    color: #757575;
+    font-size: 0.9rem;
+    font-weight: 400;
+    line-height: 1.172rem;
+}
+
+/* PHOTOGRAPHER HEADER */
+
+.photograph__card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5.5rem 5rem;
+    background-color: #FAFAFA;
+    min-height: 300px;
+
+    @include md {
+        padding: 3rem;
+        gap: 3rem;
+    }
+
+    @include sm {
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        gap: 2rem;
+    }
+
+    .card__content {
+        @include sm {
+            order: 1;
+        }
+    }
+
+    .content__title {
+        font-size: 6.4rem;
+        font-weight: 400;
+        line-height: 8.333rem;
+        color: #d3573c;
+
+        @include lg {
+            font-size: 5rem;
+        }
+
+        @include md {
+            font-size: 3rem;
+        }
+
+        @include sm {
+            font-size: 2.6rem;
+        }
+    }
+
+    .content__country {
+        font-size: 2.4rem;
+        font-weight: 400;
+        line-height: 3.125rem;
+        color: #901C1C;
+    }
+
+    .content__citation {
+        font-size: 1.8rem;
+        font-weight: 400;
+        line-height: 2.344rem;
+        color: #525252;
+        margin-top: 2rem;
+    }
+
+    .contact_button {
+        font-size: 2rem;
+        font-weight: bold;
+        color: white;
+        padding: 1.1rem;
+        width: 17rem;
+        height: 7rem;
+        border: none;
+        background-color: #901C1C;
+        border-radius: 5px;
+        cursor: pointer;
+
+        @include md {
+            font-size: 1.5rem;
+            width: 15rem;
+            height: 5rem;
+        }
+
+        @include sm {
+            order: 3;
+        }
+    }
+
+    .photographer__picture {
+
+        @include lg {
+            max-height: 17rem;
+            max-width: 17rem;
+        }
+
+        @include md {
+            max-height: 15rem;
+            max-width: 15rem;
+        }
+    }
+}
+
+// VIDEOS AND IMAGES CARDS
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: white;
+    border-radius: 0.5rem;
+    height: 100%;
+}
+
+.card__img,
+.card__video {
+    border-radius: 0.5rem;
+    height: 30rem;
+    width: 100%;
+    object-fit: cover;
+}
+
+.card__body {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-grow: 1;
+    font-size: 2.4rem;
+    font-weight: 400;
+    line-height: 3.125rem;
+    color: #901C1C;
+
+    @include xxl {
+        font-size: 2rem;
+    }
+
+    @include xl {
+        font-size: 1.7rem;
+    }
+}
+
+.likes__icon {
+    margin-left: 1rem;
+}

@@ -1,0 +1,51 @@
+@use 'media-queries' as *;
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: "DM Sans", sans-serif;
+    max-width: 144rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 4.2rem auto;
+    padding: 0 2rem;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+h1 {
+    color: #901C1C;
+    font-size: 3.6rem;
+    font-weight: 400;
+    line-height: 4.687rem;
+
+    @include md {
+        font-size: 3rem;
+    }
+
+    @include sm {
+        font-size: 2.6rem;
+    }
+}
+
+h2 {
+    color: #D3573C;
+    font-size: 3.6rem;
+    font-weight: 400;
+    line-height: 4.687rem;
+
+    @include md {
+        font-size: 3rem;
+    }
+
+    @include sm {
+        font-size: 2.6rem;
+    }
+}

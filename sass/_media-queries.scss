@@ -1,0 +1,36 @@
+// Default styles for desktop
+
+// Large desktop xxl
+@mixin xxl {
+    @media only screen and (max-width: 1300px) {
+        @content;
+    }
+}
+
+// Large desktop
+@mixin xl {
+    @media only screen and (max-width: 1200px) {
+        @content;
+    }
+}
+
+// Desktop
+@mixin lg {
+    @media only screen and (max-width: 992px) {
+        @content;
+    }
+}
+
+// Portrait tablet to landscape and desktop
+@mixin md {
+    @media only screen and (max-width: 768px) {
+        @content;
+    }
+}
+
+// Landscape phone to portrait tablet
+@mixin sm {
+    @media only screen and (max-width: 576px) {
+        @content;
+    }
+}
