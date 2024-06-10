@@ -243,6 +243,7 @@ h2 {
   height: 30rem;
   width: 100%;
   object-fit: cover;
+  cursor: pointer;
 }
 
 .card__body {
