@@ -2,17 +2,11 @@
  * Class representing the main application for the homepage.
  */
 class HomeApp {
-    /**
-     * Create an App instance for the homepage.
-     */
     constructor() {
         this.$photographersWrapper = document.querySelector('.photographers__wrapper');
-        this.photographersApi = new PhotographerApi('data/photographers.json');
+        this.photographersApi = new PhotographerApi('/data/photographers.json');
     }
 
-    /**
-     * Initialize the application for the homepage.
-     */
     async main() {
         try {
             const photographersData = await this.photographersApi.getPhotographers();

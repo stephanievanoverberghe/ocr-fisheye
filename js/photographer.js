@@ -2,9 +2,6 @@
  * Class representing the main application for the photographer page.
  */
 class PhotographerApp {
-    /**
-     * Create an App instance for the photographer page.
-     */
     constructor() {
         this.$photographerHeader = document.querySelector('.photograph__header');
         this.$mediaSection = document.querySelector('.result');
@@ -16,9 +13,6 @@ class PhotographerApp {
         this.mediaApi = new MediaApi('data/photographers.json');
     }
 
-    /**
-     * Initialize the application for the photographer page.
-     */
     async main() {
         try {
             const params = new URLSearchParams(window.location.search);
@@ -30,13 +24,17 @@ class PhotographerApp {
             if (photographer) {
                 this.displayPhotographerInfo(photographer);
                 const mediaData = await this.mediaApi.getMedia();
-                const photographerMedia = mediaData.filter(m => m.photographerId == photographerId);
-                this.displayPhotographerMedia(photographer, photographerMedia);
+                this.photographerMedia = mediaData.filter(m => m.photographerId == photographerId);
+                this.displayPhotographerMedia(photographer, this.photographerMedia);
+
                 const photographerCard = new PhotographerCard(photographer);
-                const totalLikes = photographerCard.calculateTotalLikes(photographerMedia);
+                const totalLikes = photographerCard.calculateTotalLikes(this.photographerMedia);
                 const creditSection = photographerCard.createPhotographerCredit(totalLikes);
                 this.$creditSection.innerHTML = '';
                 this.$creditSection.appendChild(creditSection);
+
+                this.renderFilter();
+                this.initFilterListener();
             } else {
                 console.error('Photographer not found');
             }
@@ -45,10 +43,6 @@ class PhotographerApp {
         }
     }
 
-    /**
-     * Display photographer information in the header.
-     * @param {Object} photographer - The photographer data.
-     */
     displayPhotographerInfo(photographer) {
         const photographerCard = new PhotographerCard(photographer);
         const infoCard = photographerCard.createPhotographerInfo();
@@ -57,11 +51,6 @@ class PhotographerApp {
         this.$photographerHeader.appendChild(infoCard);
     }
 
-    /**
-     * Display photographer media in the media section.
-     * @param {Object} photographer - The photographer data.
-     * @param {Array} media - The media data.
-     */
     displayPhotographerMedia(photographer, media) {
         this.$mediaSection.innerHTML = '';
 
@@ -70,6 +59,30 @@ class PhotographerApp {
             const mediaCard = MediaFactory.createMediaCard(mediaModel);
             this.$mediaSection.appendChild(mediaCard.createMediaCard());
         });
+    }
+
+    initFilterListener() {
+        const filterDropdown = document.getElementById('sort');
+        filterDropdown.addEventListener('change', (event) => {
+            const value = event.target.value;
+            if (value) {
+                this.applyFilter(value);
+            }
+        });
+    }
+
+    applyFilter(criterion) {
+        const strategy = SortStrategyFactory.getStrategy(criterion);
+        const sorter = new MediaSorter(strategy);
+        const sortedMedia = sorter.sort(this.photographerMedia);
+        this.displayPhotographerMedia(null, sortedMedia);
+    }
+
+    renderFilter() {
+        const filterContainer = document.querySelector('.photograph__body');
+        const filterTemplate = new FilterTemplate(filterContainer);
+        const filterForm = filterTemplate.render();
+        filterContainer.insertBefore(filterForm, filterContainer.firstChild);
     }
 }
 

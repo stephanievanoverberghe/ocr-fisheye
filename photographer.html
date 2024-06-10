@@ -14,6 +14,7 @@
 </head>
 
 <body class="photographer-page">
+  <div class="modal__overlay" id="modal-overlay" aria-hidden="true"></div>
   <!-- HEADER -->
   <header role="banner" class="header">
     <a href="index.html" aria-label="Fisheye Home page">
@@ -21,44 +22,86 @@
     </a>
   </header>
   <!-- MAIN -->
-  <main id="main" role="main" class="main">
+  <main id="main" class="main" role="main" aria-hidden="false">
     <div class="photograph__header" aria-labelledby="photograph__header-title"></div>
     <div class="photograph__body" aria-labelledby="photograph__body-title">
-      <form action="" class="form">
-        <label for="sort" class="sort-by">Trier par</label>
-        <select name="sort" id="sort" class="dropdown">
-          <option value="popular" class="asc">Popularité</option>
-          <option value="date">Date</option>
-          <option value="title">Titre</option>
-        </select>
-      </form>
       <div class="result" aria-live="polite"></div>
     </div>
   </main>
-  <div id="contact_modal" role="dialog" aria-labelledby="contact_modal_title" aria-modal="true">
-    <div class="modal">
-      <header>
-        <h2>Contactez-moi</h2>
-        <img src="assets/icons/close.svg" onclick="closeModal()" />
-      </header>
-      <form>
-        <div>
-          <label for="firstname">Prénom</label>
-          <input id="firstname" type="text" />
+  <!-- LIGHTBOX -->
+  <div id="lightbox_modal" role="dialog" class="lightbox" tabindex="0" aria-labelledby="label-media"
+    aria-label="Lightbox contenant un média">
+    <div class="lightbox__content">
+      <button class="lightbox__close" aria-label="Fermer la lightbox" title="Fermer la lightbox">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <button class="lightbox__prev" aria-label="Previous"><i class="fa-solid fa-chevron-left"></i></button>
+      <div class="lightbox__media">
+        <img src="assets/photographers/195/Architecture_Contrast.jpg" alt="" class="lightbox__img" tabindex="0">
+        <div class="card__body">
+          <span>Titre de l'image</span>
         </div>
-        <button type="submit" class="contact_button">Envoyer</button>
-      </form>
+      </div>
+      <button class="lightbox__next" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></button>
+    </div>
+  </div>
+
+  <!-- MODAL -->
+  <div id="contact_modal" role="dialog" tabindex="0" aria-labelledby="contact_modal_label" aria-modal="true">
+    <div class="modal">
+      <div class="modal__body">
+        <header class="modal__header">
+          <h2 id="contact_modal_label" class="modal__title">Contactez-moi</h2>
+          <img src="assets/icons/close.svg" class="modal__close" tabindex="0" aria-label="Fermer la modale"
+            alt="close" />
+        </header>
+        <form class="modal__form" action="#" method="post" novalidate>
+          <div>
+            <label for="firstname">Prénom</label>
+            <input id="firstname" type="text" tabindex="0" name="firstname" />
+          </div>
+          <div>
+            <label for="lastname">Nom</label>
+            <input id="lastname" type="text" tabindex="0" name="lastname">
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input id="email" type="email" tabindex="0" name="email">
+          </div>
+          <div>
+            <label for="message">Votre message</label>
+            <textarea name="message" id="message" tabindex="0"></textarea>
+          </div>
+          <button type="submit" class="contact_button" aria-label="Send">Envoyer</button>
+        </form>
+      </div>
+      <div class="modal__success">
+        <p class="success__content">Merci pour votre message. Je répondrais dans les plus brefs délais.</p>
+        <button id="success-btn" class="contact_button">Fermer</button>
+      </div>
     </div>
   </div>
   <!-- SCRIPTS -->
+  <!-- MODELS -->
   <script src="js/models/Photographer.js"></script>
   <script src="js/models/Media.js"></script>
+  <script src="js/models/MediaSorter.js"></script>
+  <!-- STRATEGIES -->
+  <script src="js/strategies/sortStrategies.js"></script>
+  <!-- FACTORIES -->
   <script src="js/factories/MediaFactory.js"></script>
+  <script src="js/factories/SortFactory.js"></script>
+  <!-- TEMPLATES -->
   <script src="js/templates/photographer.js"></script>
   <script src="js/templates/media.js"></script>
+  <script src="js/templates/filter.js"></script>
+  <!-- API -->
   <script src="js/api/api.js"></script>
-  <script src="js/photographer.js"></script>
+  <!-- UTILS -->
+  <script src="js/utils/lightbox.js"></script>
   <script src="js/utils/contactForm.js"></script>
+  <!-- APP -->
+  <script src="js/photographer.js"></script>
 </body>
 
 </html>
