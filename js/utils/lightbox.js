@@ -25,7 +25,6 @@ class Lightbox {
             this.navigateLightbox('prev');
         });
 
-        // Add event listeners to media elements
         const mediaElements = document.querySelectorAll('.card');
         console.log(mediaElements);
         mediaElements.forEach(element => {
