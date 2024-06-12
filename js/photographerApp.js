@@ -59,6 +59,7 @@ class PhotographerApp {
             const mediaCard = MediaFactory.createMediaCard(mediaModel);
             this.$mediaSection.appendChild(mediaCard.createMediaCard());
         });
+        const lightbox = new Lightbox();
     }
 
     initFilterListener() {

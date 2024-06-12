@@ -26,7 +26,8 @@ class Lightbox {
         });
 
         // Add event listeners to media elements
-        const mediaElements = document.querySelectorAll('.card__img, .card__video');
+        const mediaElements = document.querySelectorAll('.card');
+        console.log(mediaElements);
         mediaElements.forEach(element => {
             element.addEventListener('click', (event) => {
                 this.openLightbox(event.target);
@@ -72,8 +73,3 @@ class Lightbox {
         this.openLightbox(mediaElements[currentIndex]);
     }
 }
-
-document.addEventListener('DOMContentLoaded', () => {
-    const lightbox = new Lightbox();
-    console.log("DOM fully loaded and parsed");
-});
