@@ -37,9 +37,13 @@
       </button>
       <button class="lightbox__prev" aria-label="Previous"><i class="fa-solid fa-chevron-left"></i></button>
       <div class="lightbox__media">
-        <img src="assets/photographers/195/Architecture_Contrast.jpg" alt="" class="lightbox__img" tabindex="0">
-        <div class="card__body">
-          <span>Titre de l'image</span>
+        <img src="assets/photographers/195/Architecture_On_a_hill.jpg" alt="" class="lightbox__img" tabindex="0">
+        <video controls class="lightbox__video">
+          <source src="" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <div class="lightbox__body">
+          <span class="card__title">Titre de l'image</span>
         </div>
       </div>
       <button class="lightbox__next" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></button>
@@ -98,7 +102,7 @@
   <!-- API -->
   <script src="js/api/api.js"></script>
   <!-- UTILS -->
-  <script src="js/utils/lightbox.js"></script>
+  <script src="js/utils/lightbox.js" defer></script>
   <script src="js/utils/contactForm.js"></script>
   <!-- APP -->
   <script src="js/photographer.js"></script>
