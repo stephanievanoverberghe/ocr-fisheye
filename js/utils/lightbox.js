@@ -74,6 +74,6 @@ class Lightbox {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    console.log("DOM fully loaded and parsed");
     const lightbox = new Lightbox();
+    console.log("DOM fully loaded and parsed");
 });
