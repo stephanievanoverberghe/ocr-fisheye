@@ -4,7 +4,7 @@
 class HomeApp {
     constructor() {
         this.$photographersWrapper = document.querySelector('.photographers__wrapper');
-        this.photographersApi = new PhotographerApi('/data/photographers.json');
+        this.photographersApi = new PhotographerApi('data/photographers.json');
     }
 
     async main() {
