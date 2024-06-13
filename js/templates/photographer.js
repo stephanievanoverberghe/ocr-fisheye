@@ -41,7 +41,7 @@ class PhotographerCard {
                 <p class="content__citation">${this.photographer.tagline}</p>
             </div>
             <button class="contact_button" onclick="displayModal()" tabindex="0">Contactez-moi</button>
-            <img src="./assets/photographers/${this.photographer.portrait}" alt="${this.photographer.name}" class="photographer__picture" tabindex="0" role="img">
+            <img src="./assets/photographers/${this.photographer.portrait}" alt="${this.photographer.name}" class="photographer__picture" role="img">
         `;
 
         return card;
