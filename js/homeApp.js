@@ -1,6 +1,3 @@
-/**
- * Class representing the main application for the homepage.
- */
 class HomeApp {
     constructor() {
         this.$photographersWrapper = document.querySelector('.photographers__wrapper');
@@ -10,7 +7,6 @@ class HomeApp {
     async main() {
         try {
             const photographersData = await this.photographersApi.getPhotographers();
-            console.log('Photographers data:', photographersData);
 
             if (!Array.isArray(photographersData)) {
                 throw new TypeError('Expected an array of photographers');
@@ -20,7 +16,6 @@ class HomeApp {
                 .map(data => new Photographer(data))
                 .map(photographer => new PhotographerCard(photographer))
                 .forEach(template => {
-                    console.log(template);
                     this.$photographersWrapper.appendChild(template.createPhotographerCard());
                 });
         } catch (error) {

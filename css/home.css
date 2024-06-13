@@ -340,6 +340,8 @@ h2 {
 }
 .modal__close {
   cursor: pointer;
+  border: none;
+  background: none;
   height: 4rem;
   width: 4rem;
 }

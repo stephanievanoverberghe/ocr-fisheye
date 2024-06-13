@@ -7,7 +7,7 @@ class PhotographerCard {
         const card = document.createElement('li');
         card.className = 'photographer__card';
         card.innerHTML = `
-            <img src="./assets/photographers/${this.photographer.portrait}" alt="${this.photographer.name}" class="photographer__picture">
+            <img src="./assets/photographers/${this.photographer.portrait}" alt="${this.photographer.name}" class="photographer__picture" tabindex="0" role="img">
             <h2 class="photographer__title">${this.photographer.name}</h2>
             <p class="city__country">${this.photographer.city}, ${this.photographer.country}</p>
             <p class="tagline">${this.photographer.tagline}</p>
@@ -16,8 +16,18 @@ class PhotographerCard {
 
         const link = document.createElement('a');
         link.href = `photographer.html?id=${this.photographer.id}`;
-        link.appendChild(card);
+        link.tabIndex = 0;
+        link.setAttribute('role', 'link');
+        link.setAttribute('aria-label', `Voir le profil du photographe ${this.photographer.name}`);
 
+        // Handle keyboard events
+        link.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter') {
+                window.location.href = link.href;
+            }
+        });
+
+        link.appendChild(card);
         return link;
     }
 
@@ -30,8 +40,8 @@ class PhotographerCard {
                 <p class="content__country">${this.photographer.city}, ${this.photographer.country}</p>
                 <p class="content__citation">${this.photographer.tagline}</p>
             </div>
-            <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
-            <img src="./assets/photographers/${this.photographer.portrait}" alt="${this.photographer.name}" class="photographer__picture">
+            <button class="contact_button" onclick="displayModal()" tabindex="0">Contactez-moi</button>
+            <img src="./assets/photographers/${this.photographer.portrait}" alt="${this.photographer.name}" class="photographer__picture" tabindex="0" role="img">
         `;
 
         return card;

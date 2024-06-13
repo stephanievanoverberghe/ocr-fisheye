@@ -24,6 +24,12 @@ class MediaCard {
                 console.log('This media has already been liked.');
             }
         });
+
+        likeIcon.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter') {
+                likeIcon.click();
+            }
+        });
     }
 }
 
@@ -32,12 +38,12 @@ class ImageMediaCard extends MediaCard {
         const card = document.createElement('article');
         card.className = 'card';
         card.innerHTML = `
-            <img src="./assets/photographers/${this.media.image}" alt="${this.media.title}" class="card__img">
+            <img src="./../../assets/photographers/${this.media.image}" alt="${this.media.title}" class="card__img" tabindex="0" role="img">
             <div class="card__body">
-                <span>${this.media.title}</span>
+                <span class="card__title">${this.media.title}</span>
                 <div class="card__likes">
                     <span class="likes">${this.media.likes} likes</span>
-                    <i class="fa-solid fa-heart likes__icon"></i>
+                    <i class="fa-solid fa-heart likes__icon" tabindex="0" role="button" aria-label="Like"></i>
                 </div>
             </div>
         `;
@@ -51,15 +57,15 @@ class VideoMediaCard extends MediaCard {
         const card = document.createElement('article');
         card.className = 'card';
         card.innerHTML = `
-            <video controls class="card__video">
-                <source src="./assets/photographers/${this.media.video}" type="video/mp4">
+            <video controls class="card__video" tabindex="0" aria-label="${this.media.title}">
+                <source src="./../../assets/photographers/${this.media.video}" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
             <div class="card__body">
-                <span>${this.media.title}</span>
+                <span class="card__title">${this.media.title}</span>
                 <div class="card__likes">
                     <span class="likes">${this.media.likes} likes</span>
-                    <i class="fa-solid fa-heart likes__icon"></i>
+                    <i class="fa-solid fa-heart likes__icon" tabindex="0" role="button" aria-label="Like"></i>
                 </div>
             </div>
         `;

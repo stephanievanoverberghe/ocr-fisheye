@@ -340,6 +340,8 @@ h2 {
 }
 .modal__close {
   cursor: pointer;
+  border: none;
+  background: none;
   height: 4rem;
   width: 4rem;
 }
@@ -544,10 +546,6 @@ h2 {
     width: 15rem;
     padding: 1.3rem 1rem;
   }
-}
-
-.dropdown:focus {
-  outline: none;
 }
 
 /* PHOTOGRAPH PICTURES */
