@@ -38,7 +38,7 @@ class ImageMediaCard extends MediaCard {
         const card = document.createElement('article');
         card.className = 'card';
         card.innerHTML = `
-            <img src="./../../assets/photographers/${this.media.image}" alt="${this.media.title}" class="card__img" tabindex="0" role="img">
+            <img src="./assets/photographers/${this.media.image}" alt="${this.media.title}" class="card__img" tabindex="0" role="img">
             <div class="card__body">
                 <span class="card__title">${this.media.title}</span>
                 <div class="card__likes">
@@ -58,7 +58,7 @@ class VideoMediaCard extends MediaCard {
         card.className = 'card';
         card.innerHTML = `
             <video controls class="card__video" tabindex="0" aria-label="${this.media.title}">
-                <source src="./../../assets/photographers/${this.media.video}" type="video/mp4">
+                <source src="./assets/photographers/${this.media.video}" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
             <div class="card__body">

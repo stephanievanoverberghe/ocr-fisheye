@@ -7,7 +7,7 @@ class PhotographerCard {
         const card = document.createElement('li');
         card.className = 'photographer__card';
         card.innerHTML = `
-            <img src="./assets/photographers/${this.photographer.portrait}" alt="${this.photographer.name}" class="photographer__picture" tabindex="0" role="img">
+            <img src="./assets/photographers/${this.photographer.portrait}" alt="${this.photographer.name}" class="photographer__picture" role="img">
             <h2 class="photographer__title">${this.photographer.name}</h2>
             <p class="city__country">${this.photographer.city}, ${this.photographer.country}</p>
             <p class="tagline">${this.photographer.tagline}</p>
