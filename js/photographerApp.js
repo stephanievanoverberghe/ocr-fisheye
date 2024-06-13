@@ -1,6 +1,3 @@
-/**
- * Class representing the main application for the photographer page.
- */
 class PhotographerApp {
     constructor() {
         this.$photographerHeader = document.querySelector('.photograph__header');
@@ -11,6 +8,7 @@ class PhotographerApp {
 
         this.photographersApi = new PhotographerApi('data/photographers.json');
         this.mediaApi = new MediaApi('data/photographers.json');
+        this.photographerMedia = [];
     }
 
     async main() {
@@ -24,7 +22,8 @@ class PhotographerApp {
             if (photographer) {
                 this.displayPhotographerInfo(photographer);
                 const mediaData = await this.mediaApi.getMedia();
-                this.photographerMedia = mediaData.filter(m => m.photographerId == photographerId);
+                this.photographerMedia = mediaData.filter(m => m.photographerId == photographerId)
+                    .map(m => new Media(m));
                 this.displayPhotographerMedia(photographer, this.photographerMedia);
 
                 const photographerCard = new PhotographerCard(photographer);
@@ -35,6 +34,11 @@ class PhotographerApp {
 
                 this.renderFilter();
                 this.initFilterListener();
+                this.initLikeListener();
+
+                document.addEventListener('likeAdded', () => {
+                    this.updateTotalLikes();
+                });
             } else {
                 console.error('Photographer not found');
             }
@@ -55,11 +59,10 @@ class PhotographerApp {
         this.$mediaSection.innerHTML = '';
 
         media.forEach(mediaItem => {
-            const mediaModel = new Media(mediaItem);
-            const mediaCard = MediaFactory.createMediaCard(mediaModel);
+            const mediaCard = MediaFactory.createMediaCard(mediaItem);
             this.$mediaSection.appendChild(mediaCard.createMediaCard());
         });
-        const lightbox = new Lightbox();
+        new Lightbox();
     }
 
     initFilterListener() {
@@ -84,6 +87,24 @@ class PhotographerApp {
         const filterTemplate = new FilterTemplate(filterContainer);
         const filterForm = filterTemplate.render();
         filterContainer.insertBefore(filterForm, filterContainer.firstChild);
+    }
+
+    initLikeListener() {
+        document.addEventListener('likeAdded', () => {
+            this.updateTotalLikes();
+        });
+    }
+
+    updateTotalLikes() {
+        const totalLikes = this.photographerMedia.reduce((acc, media) => {
+            return acc + media.likes;
+        }, 0);
+        const totalLikesElement = this.$creditSection.querySelector('.total-likes');
+        if (totalLikesElement) {
+            totalLikesElement.textContent = totalLikes;
+        } else {
+            console.error('Total likes element not found');
+        }
     }
 }
 

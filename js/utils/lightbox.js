@@ -25,8 +25,7 @@ class Lightbox {
             this.navigateLightbox('prev');
         });
 
-        const mediaElements = document.querySelectorAll('.card');
-        console.log(mediaElements);
+        const mediaElements = document.querySelectorAll('.card__img, .card__video');
         mediaElements.forEach(element => {
             element.addEventListener('click', (event) => {
                 this.openLightbox(event.target);
@@ -35,7 +34,6 @@ class Lightbox {
     }
 
     openLightbox(mediaElement) {
-        console.log("Opening lightbox for", mediaElement);
         if (mediaElement.tagName === 'IMG') {
             this.$lightboxImg.src = mediaElement.src;
             this.$lightboxImg.alt = mediaElement.alt;

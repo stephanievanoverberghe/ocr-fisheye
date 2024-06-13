@@ -1,27 +1,32 @@
-
-/**
- * Class representing a media card.
- */
 class MediaCard {
-    /**
-     * Create a MediaCard instance.
-     * @param {Media} media - The media data.
-     */
     constructor(media) {
         this.media = media;
     }
 
-    /**
-     * Create a media card element.
-     */
     createMediaCard() {
         throw new Error('Method createMediaCard() must be implemented');
     }
+
+    addLikeListener(card) {
+        const likeIcon = card.querySelector('.likes__icon');
+        const likeCount = card.querySelector('.likes');
+
+        likeIcon.addEventListener('click', () => {
+            if (!this.media.isLiked) {
+                this.media.incrementLikes();
+                likeCount.textContent = `${this.media.likes} likes`;
+                document.dispatchEvent(new CustomEvent('likeAdded', {
+                    detail: {
+                        likes: this.media.likes
+                    }
+                }));
+            } else {
+                console.log('This media has already been liked.');
+            }
+        });
+    }
 }
 
-/**
- * Class representing an image media card.
- */
 class ImageMediaCard extends MediaCard {
     createMediaCard() {
         const card = document.createElement('article');
@@ -36,13 +41,11 @@ class ImageMediaCard extends MediaCard {
                 </div>
             </div>
         `;
+        this.addLikeListener(card);
         return card;
     }
 }
 
-/**
- * Class representing a video media card.
- */
 class VideoMediaCard extends MediaCard {
     createMediaCard() {
         const card = document.createElement('article');
@@ -60,6 +63,7 @@ class VideoMediaCard extends MediaCard {
                 </div>
             </div>
         `;
+        this.addLikeListener(card);
         return card;
     }
 }
