@@ -1,11 +1,4 @@
-/**
- * Class representing a media item.
- */
 class Media {
-  /**
-     * Create a Media instance.
-     * @param {Object} data - The media data.
-     */
   constructor(data) {
     this._id = data.id;
     this._photographerId = data.photographerId;
@@ -54,6 +47,13 @@ class Media {
     if (!this._isLiked) {
       this._likes += 1;
       this._isLiked = true;
+    }
+  }
+
+  decrementLikes() {
+    if (this._isLiked) {
+      this._likes -= 1;
+      this._isLiked = false;
     }
   }
 }

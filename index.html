@@ -14,29 +14,21 @@
 <body class="home">
   <!-- HEADER -->
   <header role="banner" class="header">
-    <!-- Lien vers la page d'accueil -->
     <a href="index.html" aria-label="Fisheye Home page">
-      <!-- Logo du site -->
       <img src="assets/images/logo.png" class="logo" alt="Fisheye Home page" />
     </a>
-    <!-- Titre de la page -->
     <h1>Nos photographes</h1>
   </header>
 
   <!-- MAIN -->
   <main id="main" role="main" class="main">
-    <!-- Liste des photographes avec une étiquette aria pour l'accessibilité -->
     <ul class="photographers__wrapper" aria-label="Tous les photographes"></ul>
   </main>
 
   <!-- SCRIPTS -->
-  <!-- Modèle de données pour les photographes -->
   <script src="js/models/Photographer.js"></script>
-  <!-- Template pour afficher les photographes -->
   <script src="js/templates/photographer.js"></script>
-  <!-- API pour récupérer les données des photographes -->
   <script src="js/api/api.js"></script>
-  <!-- Application principale pour la page d'accueil -->
   <script src="js/homeApp.js"></script>
 </body>
 

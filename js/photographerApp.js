@@ -1,3 +1,4 @@
+
 /**
  * Class representing the main application for the photographer page.
  */

@@ -3,9 +3,9 @@
  */
 class PhotographerCard {
   /**
-     * Create a PhotographerCard instance.
-     * @param {Object} photographer - The photographer data.
-     */
+   * Create a PhotographerCard instance.
+   * @param {Object} photographer - The photographer data.
+   */
   constructor(photographer) {
     this.photographer = photographer;
   }
@@ -55,10 +55,10 @@ class PhotographerCard {
   }
 
   /**
-     * Create a photographer credit element.
-     * @param {number} totalLikes - The total number of likes.
-     * @return {HTMLElement} The photographer credit element.
-     */
+   * Create a photographer credit element.
+   * @param {number} totalLikes - The total number of likes.
+   * @return {HTMLElement} The photographer credit element.
+   */
   createPhotographerCredit(totalLikes) {
     const credit = document.createElement('div');
     credit.className = 'credit';
@@ -73,10 +73,10 @@ class PhotographerCard {
   }
 
   /**
-     * Calculate the total likes of all media items.
-     * @param {Array} media - The media data.
-     * @return {number} The total likes.
-     */
+   * Calculate the total likes of all media items.
+   * @param {Array} media - The media data.
+   * @return {number} The total likes.
+   */
   calculateTotalLikes(media) {
     return media.reduce((total, item) => total + item.likes, 0);
   }
