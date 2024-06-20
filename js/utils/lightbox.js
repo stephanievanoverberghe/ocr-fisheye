@@ -1,5 +1,9 @@
+/**
+ * Class representing a lightbox.
+ */
 class Lightbox {
     constructor() {
+        // Cache DOM elements
         this.$lightboxModal = document.getElementById('lightbox_modal');
         this.$lightboxMedia = this.$lightboxModal.querySelector('.lightbox__media');
         this.$lightboxImg = this.$lightboxMedia.querySelector('.lightbox__img');
@@ -15,9 +19,13 @@ class Lightbox {
 
         this.currentMediaElement = null;
 
+        // Add event listeners for lightbox controls
         this.addEventListeners();
     }
 
+    /**
+     * Add event listeners to the lightbox controls.
+     */
     addEventListeners() {
         this.$closeButton.addEventListener('click', () => {
             this.closeLightbox();
@@ -29,6 +37,7 @@ class Lightbox {
             this.navigateLightbox('prev');
         });
 
+        // Media elements (images and videos)
         const mediaElements = document.querySelectorAll('.card__img, .card__video');
         mediaElements.forEach(element => {
             element.addEventListener('click', (event) => {
@@ -43,6 +52,10 @@ class Lightbox {
         });
     }
 
+    /**
+     * Open the lightbox with the given media element.
+     * @param {HTMLElement} mediaElement - The media element to display in the lightbox.
+     */
     openLightbox(mediaElement) {
         if (mediaElement.tagName === 'IMG') {
             this.$lightboxImg.src = mediaElement.src;
@@ -65,19 +78,26 @@ class Lightbox {
 
         this.currentMediaElement = mediaElement;
 
+        // Add keydown event listener for navigation
         document.addEventListener('keydown', this.handleKeydown.bind(this));
 
+        // Set focusable elements for accessibility
         this.focusableElements = this.$lightboxModal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
         this.firstFocusableElement = this.focusableElements[0];
         this.lastFocusableElement = this.focusableElements[this.focusableElements.length - 1];
 
+        // Focus on the first focusable element
         setTimeout(() => {
             this.firstFocusableElement.focus();
         }, 100);
 
+        // Add keydown event listener for trapping focus
         document.addEventListener('keydown', this.trapTabKey.bind(this));
     }
 
+    /**
+     * Close the lightbox and remove event listeners.
+     */
     closeLightbox() {
         this.$lightboxModal.style.display = 'none';
         this.$lightboxModal.setAttribute('aria-hidden', 'true');
@@ -87,6 +107,10 @@ class Lightbox {
         document.removeEventListener('keydown', this.trapTabKey.bind(this));
     }
 
+    /**
+     * Navigate to the next or previous media element in the lightbox.
+     * @param {string} direction - The direction to navigate ('next' or 'prev').
+     */
     navigateLightbox(direction) {
         const mediaElements = Array.from(document.querySelectorAll('.card__img, .card__video'));
         let currentIndex = mediaElements.indexOf(this.currentMediaElement);
@@ -98,6 +122,10 @@ class Lightbox {
         this.updateLightboxContent(mediaElements[currentIndex]);
     }
 
+    /**
+     * Update the lightbox content with the given media element.
+     * @param {HTMLElement} mediaElement - The media element to display in the lightbox.
+     */
     updateLightboxContent(mediaElement) {
         if (mediaElement.tagName === 'IMG') {
             this.$lightboxImg.src = mediaElement.src;
@@ -118,6 +146,10 @@ class Lightbox {
         this.currentMediaElement = mediaElement;
     }
 
+    /**
+     * Handle keydown events for lightbox navigation.
+     * @param {KeyboardEvent} event - The keydown event.
+     */
     handleKeydown(event) {
         if (event.key === 'Escape') {
             this.closeLightbox();
@@ -128,16 +160,18 @@ class Lightbox {
         }
     }
 
+    /**
+     * Trap Tab key navigation within the lightbox for accessibility.
+     * @param {KeyboardEvent} event - The keydown event.
+     */
     trapTabKey(event) {
         if (event.key === 'Tab') {
-            if (event.shiftKey) {
-                // If Shift + Tab
+            if (event.shiftKey) { // If Shift + Tab
                 if (document.activeElement === this.firstFocusableElement) {
                     event.preventDefault();
                     this.lastFocusableElement.focus();
                 }
-            } else {
-                // If Tab
+            } else { // If Tab
                 if (document.activeElement === this.lastFocusableElement) {
                     event.preventDefault();
                     this.firstFocusableElement.focus();
@@ -147,8 +181,9 @@ class Lightbox {
     }
 }
 
-window.Lightbox = Lightbox;
+// window.Lightbox = Lightbox;
 
+// Initialize the lightbox when the DOM is fully loaded
 document.addEventListener('DOMContentLoaded', () => {
     new Lightbox();
 });

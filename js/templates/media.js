@@ -1,4 +1,11 @@
+/**
+ * Class representing a media card.
+ */
 class MediaCard {
+    /**
+     * Create a MediaCard instance.
+     * @param {Object} media - The media data.
+     */
     constructor(media) {
         this.media = media;
     }
@@ -7,6 +14,10 @@ class MediaCard {
         throw new Error('Method createMediaCard() must be implemented');
     }
 
+    /**
+     * Add an event listener for the like button.
+     * @param {HTMLElement} card - The media card element.
+     */
     addLikeListener(card) {
         const likeIcon = card.querySelector('.likes__icon');
         const likeCount = card.querySelector('.likes');

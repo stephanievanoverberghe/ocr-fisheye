@@ -10,7 +10,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const focusableElements = modal.querySelectorAll('input, button, textarea');
     const lastFocusableElement = focusableElements[focusableElements.length - 1];
 
-    window.displayModal = () => { // Define displayModal on window object
+    /**
+     * Display the contact modal and initialize event listeners.
+     */
+    window.displayModal = () => {
         modal.style.display = 'flex';
         modal.setAttribute('aria-hidden', 'false');
         modal.addEventListener('click', outsideClickListener);
@@ -20,6 +23,9 @@ document.addEventListener('DOMContentLoaded', () => {
         firstFocusableElement.focus();
     };
 
+    /**
+     * Close the contact modal and remove event listeners.
+     */
     const closeModal = () => {
         modal.style.display = 'none';
         modal.setAttribute('aria-hidden', 'true');
@@ -32,6 +38,10 @@ document.addEventListener('DOMContentLoaded', () => {
         modalBody.style.display = 'block';
     };
 
+    /**
+     * Close the modal if a click is detected outside of it.
+     * @param {Event} event - The click event.
+     */
     const outsideClickListener = (event) => {
         const modalContent = document.querySelector('.modal');
         if (!modalContent.contains(event.target)) {
@@ -39,6 +49,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+    /**
+     * Handle Tab navigation within the modal.
+     * @param {KeyboardEvent} e - The keydown event.
+     */
     const trapTabKey = (e) => {
         if (e.key === 'Tab') {
             if (e.shiftKey) { // shift + tab
@@ -58,8 +72,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+    // Add click event to each contact button to display the modal
     contactButtons.forEach(button => button.addEventListener('click', window.displayModal));
 
+    // Handle form submission
     form.addEventListener('submit', (e) => {
         e.preventDefault();
         const formData = new FormData(form);

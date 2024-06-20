@@ -1,4 +1,10 @@
+/**
+ * Class representing the main application for the photographer page.
+ */
 class PhotographerApp {
+    /**
+     * Create a PhotographerApp instance.
+     */
     constructor() {
         this.$photographerHeader = document.querySelector('.photograph__header');
         this.$mediaSection = document.querySelector('.result');
@@ -11,6 +17,9 @@ class PhotographerApp {
         this.photographerMedia = [];
     }
 
+    /**
+     * Main entry point for the application.
+     */
     async main() {
         try {
             const params = new URLSearchParams(window.location.search);
@@ -47,6 +56,10 @@ class PhotographerApp {
         }
     }
 
+    /**
+     * Display photographer information in the header section.
+     * @param {Object} photographer - The photographer data.
+     */
     displayPhotographerInfo(photographer) {
         const photographerCard = new PhotographerCard(photographer);
         const infoCard = photographerCard.createPhotographerInfo();
@@ -55,6 +68,11 @@ class PhotographerApp {
         this.$photographerHeader.appendChild(infoCard);
     }
 
+    /**
+     * Display the media items for the photographer.
+     * @param {Object} photographer - The photographer data.
+     * @param {Array} media - The media data.
+     */
     displayPhotographerMedia(photographer, media) {
         this.$mediaSection.innerHTML = '';
 
@@ -65,6 +83,9 @@ class PhotographerApp {
         new Lightbox();
     }
 
+    /**
+     * Initialize the filter dropdown listener.
+     */
     initFilterListener() {
         const filterDropdown = document.getElementById('sort');
         filterDropdown.addEventListener('change', (event) => {
@@ -75,6 +96,10 @@ class PhotographerApp {
         });
     }
 
+    /**
+     * Apply the selected filter to the media items.
+     * @param {string} criterion - The selected filter criterion.
+     */
     applyFilter(criterion) {
         const strategy = SortStrategyFactory.getStrategy(criterion);
         const sorter = new MediaSorter(strategy);
@@ -82,6 +107,9 @@ class PhotographerApp {
         this.displayPhotographerMedia(null, sortedMedia);
     }
 
+    /**
+     * Render the filter dropdown.
+     */
     renderFilter() {
         const filterContainer = document.querySelector('.photograph__body');
         const filterTemplate = new FilterTemplate(filterContainer);
@@ -89,12 +117,18 @@ class PhotographerApp {
         filterContainer.insertBefore(filterForm, filterContainer.firstChild);
     }
 
+    /**
+     * Initialize the listener for the like events.
+     */
     initLikeListener() {
         document.addEventListener('likeAdded', () => {
             this.updateTotalLikes();
         });
     }
 
+    /**
+     * Update the total likes count in the photographer credit section.
+     */
     updateTotalLikes() {
         const totalLikes = this.photographerMedia.reduce((acc, media) => {
             return acc + media.likes;

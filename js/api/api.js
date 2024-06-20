@@ -1,7 +1,7 @@
 class Api {
     /**
-     * Create an Api instance
-     * @param {string} url 
+     * Create an Api instance.
+     * @param {string} url - The URL of the API.
      */
     constructor(url) {
         this._url = url;
@@ -19,8 +19,8 @@ class Api {
 
 class PhotographerApi extends Api {
     /**
-     * Create a photographerApi instance
-     * @param {string} url 
+     * Create a PhotographerApi instance.
+     * @param {string} url - The URL of the Photographer API.
      */
     constructor(url) {
         super(url);
@@ -34,8 +34,8 @@ class PhotographerApi extends Api {
 
 class MediaApi extends Api {
     /**
-     * 
-     * @param {string} url 
+     * Create a MediaApi instance.
+     * @param {string} url - The URL of the Media API.
      */
     constructor(url) {
         super(url);

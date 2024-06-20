@@ -1,9 +1,19 @@
+/**
+ * Class representing the main application for the home page.
+ */
 class HomeApp {
+    /**
+     * Create a HomeApp instance.
+     */
     constructor() {
         this.$photographersWrapper = document.querySelector('.photographers__wrapper');
         this.photographersApi = new PhotographerApi('data/photographers.json');
     }
 
+    /**
+     * Main entry point for the application.
+     * Fetches and displays photographers data.
+     */
     async main() {
         try {
             const photographersData = await this.photographersApi.getPhotographers();

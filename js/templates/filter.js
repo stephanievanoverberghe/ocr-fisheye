@@ -1,3 +1,6 @@
+/**
+ * Class representing a filter template.
+ */
 class FilterTemplate {
     /**
      * Create a FilterTemplate instance.

@@ -1,5 +1,8 @@
 // SortStrategy.js
 class SortStrategy {
+    /**
+     * @param {Array} media - The media items to sort.
+     */
     sort(media) {
         throw new Error("Method 'sort()' must be implemented.");
     }
