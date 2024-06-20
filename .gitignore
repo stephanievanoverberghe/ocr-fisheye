@@ -1,2 +1,4 @@
 .vscode
+.setting.json
 node_modules
+eslint.config.js

@@ -2,39 +2,38 @@
  * Class representing a photographer.
  */
 class Photographer {
-    /**
+  /**
      * Create a Photographer instance
      * @param {Object} data - The photographer data.
      */
-    constructor(data) {
-        this._id = data.id;
-        this._name = data.name;
-        this._city = data.city;
-        this._portrait = data.portrait;
-        this._country = data.country;
-        this._tagline = data.tagline;
-        this._price = data.price;
-    };
-    get id() {
-        return this._id;
-    };
-    get name() {
-        return this._name;
-    };
-    get city() {
-        return this._city;
-    };
-    get portrait() {
-        return `${this._portrait}`;
-    };
-    get country() {
-        return this._country;
-    };
-    get tagline() {
-        return this._tagline;
-    };
-    get price() {
-        return this._price;
-    };
+  constructor(data) {
+    this._id = data.id;
+    this._name = data.name;
+    this._city = data.city;
+    this._portrait = data.portrait;
+    this._country = data.country;
+    this._tagline = data.tagline;
+    this._price = data.price;
+  };
+  get id() {
+    return this._id;
+  };
+  get name() {
+    return this._name;
+  };
+  get city() {
+    return this._city;
+  };
+  get portrait() {
+    return `${this._portrait}`;
+  };
+  get country() {
+    return this._country;
+  };
+  get tagline() {
+    return this._tagline;
+  };
+  get price() {
+    return this._price;
+  };
 };
-
