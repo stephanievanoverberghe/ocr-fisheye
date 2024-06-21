@@ -1,4 +1,4 @@
-class MediaSorter {
+export class MediaSorter {
   /**
      * Create a MediaSorter instance.
      * @param {Object} strategy - The sorting strategy to use.

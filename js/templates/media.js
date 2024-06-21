@@ -1,7 +1,7 @@
 /**
  * Class representing a media card.
  */
-class MediaCard {
+export class MediaCard {
   /**
      * Create a MediaCard instance.
      * @param {Object} media - The media data.
@@ -52,7 +52,7 @@ class MediaCard {
   }
 }
 
-class ImageMediaCard extends MediaCard {
+export class ImageMediaCard extends MediaCard {
   createMediaCard() {
     const card = document.createElement('article');
     card.className = 'card';
@@ -71,7 +71,7 @@ class ImageMediaCard extends MediaCard {
   }
 }
 
-class VideoMediaCard extends MediaCard {
+export class VideoMediaCard extends MediaCard {
   createMediaCard() {
     const card = document.createElement('article');
     card.className = 'card';

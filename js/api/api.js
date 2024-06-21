@@ -46,3 +46,5 @@ class MediaApi extends Api {
     return data ? data.media : [];
   }
 }
+
+export { Api, PhotographerApi, MediaApi };

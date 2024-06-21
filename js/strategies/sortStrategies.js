@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 // SortStrategy.js
 class SortStrategy {
   /**
@@ -28,3 +29,5 @@ class TitleSortStrategy extends SortStrategy {
     return media.sort((a, b) => a.title.localeCompare(b.title));
   }
 }
+
+export { SortStrategy, PopularitySortStrategy, DateSortStrategy, TitleSortStrategy };

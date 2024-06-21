@@ -1,4 +1,4 @@
-class Photographer {
+export class Photographer {
   /**
    * Create a Photographer instance.
    * @param {Object} data - The photographer data.

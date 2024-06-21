@@ -1,7 +1,7 @@
 /**
  * Class representing a photographer card.
  */
-class PhotographerCard {
+export class PhotographerCard {
   /**
    * Create a PhotographerCard instance.
    * @param {Object} photographer - The photographer data.

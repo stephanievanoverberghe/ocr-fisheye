@@ -1,7 +1,7 @@
 /**
  * Class representing a filter template.
  */
-class FilterTemplate {
+export class FilterTemplate {
   /**
      * Create a FilterTemplate instance.
      * @param {HTMLElement} container - The container where the filter will be rendered.

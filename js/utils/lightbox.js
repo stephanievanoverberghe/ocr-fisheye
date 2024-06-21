@@ -1,7 +1,7 @@
 /**
  * Class representing a lightbox.
  */
-class Lightbox {
+export class Lightbox {
   constructor() {
     // Cache DOM elements
     this.$lightboxModal = document.getElementById('lightbox_modal');

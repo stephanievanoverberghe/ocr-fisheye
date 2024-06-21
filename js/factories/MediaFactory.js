@@ -1,7 +1,8 @@
+import { ImageMediaCard, VideoMediaCard } from '../templates/media.js';
 /**
  * Factory class for creating media card instances.
  */
-class MediaFactory {
+export class MediaFactory {
   /**
      * Create a media card instance based on the media type.
      * @param {Object} media - The media data.

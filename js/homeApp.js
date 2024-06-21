@@ -1,3 +1,6 @@
+import { PhotographerApi } from './api/api.js';
+import { Photographer } from './models/Photographer.js';
+import { PhotographerCard } from './templates/photographer.js';
 /**
  * Class representing the main application for the home page.
  */
