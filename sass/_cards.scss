@@ -1,3 +1,4 @@
+@use 'keyframes';
 @use 'media-queries' as *;
 
 .photographer__card {
@@ -185,4 +186,9 @@
     margin-left: 1rem;
     padding: 0.5rem;
     cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.likes__icon.pop {
+    animation: pop 0.5s ease;
 }

@@ -85,6 +85,17 @@ h2 {
   }
 }
 
+@keyframes pop {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
 .photographer__card {
   justify-self: center;
   display: flex;
@@ -271,6 +282,11 @@ h2 {
   margin-left: 1rem;
   padding: 0.5rem;
   cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.likes__icon.pop {
+  animation: pop 0.5s ease;
 }
 
 #contact_modal {
@@ -294,8 +310,9 @@ h2 {
   max-width: 70rem;
   width: 100%;
   max-height: 90vh;
-  overflow-y: auto;
   margin: 1rem;
+  overflow-y: scroll;
+  scrollbar-width: none;
 }
 @media only screen and (max-width: 768px) {
   .modal {
@@ -513,6 +530,10 @@ h2 {
   color: white;
   font-size: 2.4rem;
   font-weight: 700;
+  text-align: center;
+}
+.lightbox__body .card__title {
+  font-size: 1.5rem;
   text-align: center;
 }
 

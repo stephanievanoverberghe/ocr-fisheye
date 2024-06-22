@@ -3,7 +3,6 @@
  */
 export class Lightbox {
   constructor() {
-    // Cache DOM elements
     this.$lightboxModal = document.getElementById('lightbox_modal');
     this.$lightboxMedia = this.$lightboxModal.querySelector('.lightbox__media');
     this.$lightboxImg = this.$lightboxMedia.querySelector('.lightbox__img');
@@ -19,7 +18,6 @@ export class Lightbox {
 
     this.currentMediaElement = null;
 
-    // Add event listeners for lightbox controls
     this.addEventListeners();
   }
 

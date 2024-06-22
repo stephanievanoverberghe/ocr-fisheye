@@ -37,11 +37,13 @@ export class MediaCard {
     if (likeIcon.classList.contains('fa-regular')) {
       this.media.incrementLikes();
       likeIcon.classList.remove('fa-regular');
-      likeIcon.classList.add('fa-solid');
+      likeIcon.classList.add('fa-solid', 'pop');
+      setTimeout(() => likeIcon.classList.remove('pop'), 500);
     } else {
       this.media.decrementLikes();
       likeIcon.classList.remove('fa-solid');
-      likeIcon.classList.add('fa-regular');
+      likeIcon.classList.add('fa-regular', 'pop');
+      setTimeout(() => likeIcon.classList.remove('pop'), 500);
     }
     likeCount.textContent = `${this.media.likes} likes`;
     document.dispatchEvent(new CustomEvent('likeAdded', {
