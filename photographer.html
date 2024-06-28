@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Découvrez les œuvres de notre photographe sur Fisheye.">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+  <link href="css/home.css" rel="stylesheet" type="text/css">
+  <link href="css/photographer.css" rel="stylesheet" type="text/css" />
+  <script src="https://kit.fontawesome.com/33a775bcdb.js" crossorigin="anonymous"></script>
+  <title>Fisheye - photographe</title>
+</head>
+
+<body class="photographer-page">
+  <!-- HEADER -->
+  <header role="banner" class="header">
+    <a href="index.html" aria-label="Fisheye Home page">
+      <img src="assets/images/logo.png" class="logo" alt="Fisheye Home page" />
+    </a>
+  </header>
+  <!-- MAIN -->
+  <main id="main" class="main" role="main" aria-hidden="false">
+    <div class="photograph__header" aria-labelledby="photograph__header-title"></div>
+    <div class="photograph__body" aria-labelledby="photograph__body-title">
+      <div class="result" aria-live="polite"></div>
+    </div>
+  </main>
+  <!-- LIGHTBOX -->
+  <div id="lightbox_modal" role="dialog" class="lightbox" tabindex="0" aria-labelledby="label-media"
+    aria-label="Lightbox contenant un média">
+    <div class="lightbox__content">
+      <button class="lightbox__close" aria-label="Fermer la lightbox" title="Fermer la lightbox">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <button class="lightbox__prev" aria-label="Previous"><i class="fa-solid fa-chevron-left"></i></button>
+      <div class="lightbox__media">
+        <img src="assets/photographers/195/Architecture_On_a_hill.jpg" alt="" class="lightbox__img" tabindex="0">
+        <video controls class="lightbox__video">
+          <source src="" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <div class="lightbox__body">
+          <span class="card__title"></span>
+        </div>
+      </div>
+      <button class="lightbox__next" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></button>
+    </div>
+  </div>
+
+  <!-- MODAL -->
+  <div id="contact_modal" role="dialog" tabindex="-1" aria-labelledby="contact_modal_label" aria-modal="true">
+    <div class="modal" role="document">
+      <div class="modal__body">
+        <header class="modal__header">
+          <h2 id="contact_modal_label" class="modal__title">Contactez-moi</h2>
+          <button class="modal__close" aria-label="Fermer la modale">
+            <img src="assets/icons/close.svg" alt="Fermer la modale" />
+          </button>
+        </header>
+        <!-- Formulaire de contact -->
+        <form class="modal__form" action="#" method="post" novalidate>
+          <div>
+            <label for="firstname">Prénom</label>
+            <input id="firstname" type="text" name="firstname" required />
+          </div>
+          <div>
+            <label for="lastname">Nom</label>
+            <input id="lastname" type="text" name="lastname" required />
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input id="email" type="email" name="email" required />
+          </div>
+          <div>
+            <label for="message">Votre message</label>
+            <textarea id="message" name="message" required></textarea>
+          </div>
+          <button type="submit" class="contact_button" aria-label="Envoyer">Envoyer</button>
+        </form>
+      </div>
+      <div class="modal__success" aria-hidden="true">
+        <p class="success__content">Merci pour votre message. Je répondrais dans les plus brefs délais.</p>
+        <button id="success-btn" class="contact_button">Fermer</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCRIPTS -->
+  <script type="module" src="js/photographerApp.js"></script>
+  <script src="js/utils/contactForm.js"></script>
+</body>
+
+</html>

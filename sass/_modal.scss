@@ -1,0 +1,170 @@
+@use 'media-queries' as *;
+
+#contact_modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    overflow: auto;
+}
+
+.modal {
+    background-color: #db8876;
+    padding: 1.5rem 3.5rem;
+    border-radius: 0.5rem;
+    max-width: 70rem;
+    width: 100%;
+    max-height: 90vh;
+    margin: 1rem;
+    overflow-y: scroll;
+    scrollbar-width: none;
+
+    @include md {
+        padding: 1.5rem 2.5rem;
+    }
+
+    @include sm {
+        padding: 2rem;
+    }
+
+    &__body {
+        height: auto;
+    }
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5rem;
+    }
+
+    &__title {
+        font-size: 6.4rem;
+        font-weight: 400;
+        line-height: 8.333rem;
+        color: black;
+        margin: 0;
+
+        @include xxl {
+            font-size: 5rem;
+        }
+
+        @include md {
+            font-size: 4rem;
+        }
+
+        @include sm {
+            font-size: 2.6rem;
+        }
+    }
+
+    &__close {
+        cursor: pointer;
+        border: none;
+        background: none;
+        height: 4rem;
+        width: 4rem;
+
+        @include xxl {
+            height: 3rem;
+            width: 3rem;
+        }
+    }
+
+    img {
+        @include md {
+            height: 2rem;
+            width: 2rem;
+        }
+    }
+}
+
+.modal__form {
+    div {
+        margin-bottom: 0.5rem;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-size: 3rem;
+        font-weight: 400;
+        line-height: 4.687rem;
+
+        @include xxl {
+            font-size: 2.5rem;
+        }
+
+        @include sm {
+            font-size: 1.6rem;
+        }
+    }
+
+    input,
+    textarea {
+        width: 100%;
+        padding: 0.5rem;
+        border-radius: 0.5rem;
+        border: none;
+    }
+
+    input {
+        height: 5rem;
+
+        @include xxl {
+            height: 4rem;
+        }
+    }
+
+    textarea {
+        resize: vertical;
+        min-height: 10rem;
+
+        @include xxl {
+            min-height: 7rem;
+        }
+    }
+}
+
+.modal .contact_button {
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+    margin-top: 2.6rem;
+    padding: 0.5rem 1rem;
+    width: 17rem;
+    height: 7rem;
+    border: none;
+    background-color: #901C1C;
+    border-radius: 0.5rem;
+    cursor: pointer;
+
+    @include md {
+        font-size: 1.5rem;
+        width: 15rem;
+        height: 5rem;
+    }
+}
+
+.modal__success {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.success__content {
+    font-size: 3rem;
+    color: black;
+    text-align: center;
+
+    @include sm {
+        font-size: 2rem;
+    }
+}

@@ -1,0 +1,22 @@
+{
+    "name": "ocr-fisheye",
+    "version": "1.0.0",
+    "type": "module",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "sass": "sass -w sass:css",
+        "lint": "eslint . --fix"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "sass": "^1.77.6"
+    },
+    "devDependencies": {
+        "@eslint/js": "^9.5.0",
+        "eslint": "^9.5.0",
+        "globals": "^15.6.0"
+    }
+}

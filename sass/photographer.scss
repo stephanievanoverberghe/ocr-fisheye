@@ -1,0 +1,100 @@
+@use 'reset';
+@use 'bases';
+@use 'header';
+@use 'cards';
+@use 'modal';
+@use 'lightbox';
+@use 'media-queries' as *;
+
+
+
+/* SORT */
+
+.form {
+    display: grid;
+    grid-template-columns: repeat(2, 10rem);
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.sort-by {
+    font-size: 1.8rem;
+    font-weight: 700;
+    line-height: 2.344rem;
+    margin-right: 2.5rem;
+}
+
+.dropdown {
+    appearance: none;
+    background: url('./../assets/images/arrow-down.png') no-repeat right 2rem center;
+    background-size: 1.5rem;
+    background-color: #901C1C;
+    color: white;
+    width: 17rem;
+    font-size: 1.8rem;
+    font-weight: 700;
+    line-height: 2.344rem;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 2.3rem 2rem;
+
+    @include md {
+        font-size: 1.5rem;
+        width: 15rem;
+        padding: 1.3rem 1rem;
+    }
+}
+
+/* PHOTOGRAPH PICTURES */
+
+.result {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: space-between;
+    align-items: start;
+    margin-top: 6rem;
+    gap: 10rem;
+
+    @include xl {
+        gap: 5rem;
+    }
+
+    @include md {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include sm {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* CREDIT */
+
+.credit {
+    background-color: #DB8876;
+    display: flex;
+    justify-content: space-between;
+    padding: 1.6rem;
+    width: 20%;
+    position: fixed;
+    right: 3.6rem;
+    bottom: 0;
+    border-radius: 0.5rem 0.5rem 0 0;
+    font-size: 2.4rem;
+
+    @include xxl {
+        font-size: 2rem;
+    }
+
+    @include xl {
+        font-size: 1.5rem;
+    }
+
+    @include lg {
+        width: 30%;
+    }
+
+    @include sm {
+        width: 70%;
+    }
+}
