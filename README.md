@@ -23,6 +23,8 @@ Fisheye est une plateforme où les utilisateurs peuvent découvrir des photograp
 
 ## Screenshot
 
+![](./assets/images/screenshot.png)
+
 ## Fonctionnalités
 
 > -   Affichage de la liste des photographes avec leurs détails.
